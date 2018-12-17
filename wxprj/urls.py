@@ -17,10 +17,10 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url
 
-from apps.sdti.views import wx
+from apps.sdti.views import checkwx
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    url(r'^wx$', wx, name='wx'),
+    url(r'^wx$', checkwx, name='wx'),
 ]

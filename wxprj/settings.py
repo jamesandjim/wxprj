@@ -25,7 +25,7 @@ SECRET_KEY = '!3t7nn_68qca7ju%nsnu&q!i82e96o-pq%m3q+bejcc%@-r@sq'
 TOKEN = 'sdzhfssd88888'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['127.0.0.1', '120.78.238.128']
 
