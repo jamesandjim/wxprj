@@ -59,7 +59,7 @@ def checkwx(requests):  # URL路由入口
 # 预留处理接口
 # 推荐直接返回XML
 def DealTextMsg(*args, **kwds):  # 处理文本信息
-    pass
+    return '欢迎来到丰盛安防'
 
 
 def DealImageMsg(*args, **kwds):  # 处理图片信息
@@ -88,9 +88,9 @@ def autorely(requests):
     MsgId = Root.find('MsgId').text
     if MsgType == 'text':
         Content = Root.find('Content').text
-        DealTextMsg(Content)
+        Content1 = DealTextMsg(Content)
         return CreateXML(ToUserName=requests.GET['openid'], FromUserName=ToUserName, CreateTime=int(time.time()),
-                         MsgType='text', Content=Content)
+                         MsgType='text', Content=Content1)
     elif MsgType == 'image':
         ResourceUrl = Root.find('PicUrl').text
         DealImageMsg()
