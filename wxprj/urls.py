@@ -19,9 +19,11 @@ from django.conf.urls import url
 import xadmin
 
 from apps.sdti.views import checkwx
+from apps.device.views import gettoken
 
 
 urlpatterns = [
     path('xadmin/', xadmin.site.urls),
     url(r'^wx$', checkwx, name='wx'),
+    url(r'^gettoken/', gettoken),
 ]

@@ -1,10 +1,32 @@
 <!DOCTYPE html>
+{% load staticfiles %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script type="text/javascript" src = /static/js/jquery-3.3.1.min.js></script>
 </head>
 <body>
+    <input type="button" id="ok" value="确认">
+    <a id="msg_ret"></a>
 
+    <script>
+        $("#ok").click(function () {
+
+            $.ajax({
+
+                url :'/gettoken/',
+                type : 'POST',
+                dataType: 'json',
+                data : {"apiid":"bl397233b7de02c055", "apikeyu":"8834cbfb90409c0ede225efef83dfe6c"},
+
+                success: function (data) {
+                    alert(data);
+
+                }
+
+            })
+        })
+    </script>
 </body>
 </html>
