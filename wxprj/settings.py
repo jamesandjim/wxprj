@@ -28,7 +28,7 @@ SECRET_KEY = '!3t7nn_68qca7ju%nsnu&q!i82e96o-pq%m3q+bejcc%@-r@sq'
 TOKEN = 'sdzhfssd88888'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', '120.78.238.128']
 
@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     'xadmin',
     'crispy_forms',
     'reversion',
-    'sdti',
+    'apps.sdti',
+    'apps.device',
 ]
 
 MIDDLEWARE = [
@@ -136,11 +137,7 @@ STATIC_URL = '/static/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static_files')
 
-STATICFILES_DIRS = [
-    ('css', os.path.join(STATIC_ROOT, 'css')),
-    ('img', os.path.join(STATIC_ROOT, 'img')),
-    ('js', os.path.join(STATIC_ROOT, 'js')),
-    ('fonts', os.path.join(STATIC_ROOT, 'fonts')),
-    ('plug', os.path.join(STATIC_ROOT, 'plug')),
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
 
-]
