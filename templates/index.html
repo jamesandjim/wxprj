@@ -15,13 +15,17 @@
 
             $.ajax({
 
-                url :'/gettoken/',
-                type : 'POST',
+                url :'https://api.parkline.cc/api/token',
+                type:'post',
                 dataType: 'json',
-                data : {"apiid":"bl397233b7de02c055", "apikeyu":"8834cbfb90409c0ede225efef83dfe6c"},
+                data : {"apiid":"bl397233b7de02c055", "apikey":"8834cbfb90409c0ede225efef83dfe6c"},
 
                 success: function (data) {
-                    alert(data);
+
+                    alert(data.access_token);
+                    $('#msg_ret').text(data.access_token);
+
+
 
                 }
 
