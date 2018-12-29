@@ -7,13 +7,16 @@
     <script type="text/javascript" src = /static/jquery-3.3.1.min.js></script>
 </head>
 <body>
+   <input type="hidden" id = “ac" value={{ access_token }}>
     <input type="button" id="ok" value="确认">
     <a id="msg_ret"></a>
 
     <script>
         $("#ok").click(function () {
-
-            $.ajax({
+            acv = $("#ac").val();
+            if (acv == '0')
+            {
+                $.ajax({
 
                 url :'https://api.parkline.cc/api/token',
                 type:'post',
@@ -48,6 +51,29 @@
                 }
 
             })
+            }
+            else
+            {
+                $.ajax({
+
+                         url :'/gettoken/',
+                         type:'post',
+                         dataType: 'json',
+                         data : {"access_token":acv},
+
+                         success: function (data1) {
+
+                               alert('OK!');
+
+
+
+
+                         }
+
+                    })
+            }
+
+
         })
     </script>
 </body>

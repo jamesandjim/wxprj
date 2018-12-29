@@ -3,6 +3,7 @@ from django.http import HttpResponse,JsonResponse
 import requests
 import json
 from datetime import datetime
+from django.utils import timezone
 
 from .models import Stoken
 
@@ -11,11 +12,22 @@ from .models import Stoken
 
 def gettoken(request):
     if request.method == "GET":
-        return render(request, 'index.html')
+        access_token = '0'
+        now = timezone.now()
+        b = Stoken.objects.all().order_by('-expires_in')[0]
+
+        if b is not None:
+            expires_in = b.expires_in
+
+            if expires_in.strftime( '%Y-%m-%d %H:%M:%S %f') > now.strftime('%Y-%m-%d %H:%M:%S %f'):
+                access_token = b.access_token
+
+        return render(request, 'index.html', {"access_token":access_token})
     else:
-        now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        if Stoken.objects.filter(expires_in__gt=now).count() > 0:
-            access_token = Stoken.objects.order_by('-expires_in')[0].access_token
+        now = timezone.now()
+        b = Stoken.objects.all().order_by('-expires_in')[0]
+        if b is not None:
+            access_token = b.access_token
         else:
             expires_in = request.POST.get('expires_in')
             access_token = request.POST.get('access_token')
