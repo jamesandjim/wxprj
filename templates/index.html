@@ -5,76 +5,15 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <script type="text/javascript" src = /static/jquery-3.3.1.min.js></script>
+    <script type="text/javascript" src =/static/gettoken.js></script>
+    <script type="text/javascript" src =/static/opendoor.js></script>
 </head>
 <body>
-   <input type="hidden" id = “ac" value={{ access_token }}>
-    <input type="button" id="ok" value="确认">
-    <a id="msg_ret"></a>
-
-    <script>
-        $("#ok").click(function () {
-            acv = $("#ac").val();
-            if (acv == '0')
-            {
-                $.ajax({
-
-                url :'https://api.parkline.cc/api/token',
-                type:'post',
-                dataType: 'json',
-                data : {"apiid":"bl397233b7de02c055", "apikey":"da5cbd210dbd9e994a9fdf5731aaae51"},
-
-                success: function (data) {
-
-                    alert(data.access_token);
-                    $('#msg_ret').text(data.access_token);
-
-                    $.ajax({
-
-                         url :'/gettoken/',
-                         type:'post',
-                         dataType: 'json',
-                         data : {"expires_in":data.expires_in, "access_token":data.access_token},
-
-                         success: function (data1) {
-
-                               alert('OK!');
+    <label id="ac">{{ access_token }}</label>
+    <label id="ex">{{ expires_in }}</label>
+    <input type="button" id="ok" value="取得Token">
+    <input type="button" id="open" value="开门">
 
 
-
-
-                         }
-
-                    })
-
-
-
-                }
-
-            })
-            }
-            else
-            {
-                $.ajax({
-
-                         url :'/gettoken/',
-                         type:'post',
-                         dataType: 'json',
-                         data : {"access_token":acv},
-
-                         success: function (data1) {
-
-                               alert('OK!');
-
-
-
-
-                         }
-
-                    })
-            }
-
-
-        })
-    </script>
 </body>
 </html>

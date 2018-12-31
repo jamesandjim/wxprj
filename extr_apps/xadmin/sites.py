@@ -57,7 +57,7 @@ class AdminSite(object):
             'avs': copy.copy(self._registry_avs),
             'views': copy.copy(self._registry_views),
             'settings': copy.copy(self._registry_settings),
-            'modelviews': copy.copy(self._registry_modelviews),
+            'static': copy.copy(self._registry_modelviews),
             'plugins': copy.copy(self._registry_plugins),
         }
 
@@ -66,7 +66,7 @@ class AdminSite(object):
         self._registry_avs = data['avs']
         self._registry_views = data['views']
         self._registry_settings = data['settings']
-        self._registry_modelviews = data['modelviews']
+        self._registry_modelviews = data['static']
         self._registry_plugins = data['plugins']
 
     def register_modelview(self, path, admin_view_class, name):

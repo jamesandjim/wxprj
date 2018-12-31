@@ -13,27 +13,26 @@ from .models import Stoken
 def gettoken(request):
     if request.method == "GET":
         access_token = '0'
+        expires_in = '0'
         now = timezone.now()
-        b = Stoken.objects.all().order_by('-expires_in')[0]
+        b = Stoken.objects.filter(tid='99')[0]
 
         if b is not None:
             expires_in = b.expires_in
 
-            if expires_in.strftime( '%Y-%m-%d %H:%M:%S %f') > now.strftime('%Y-%m-%d %H:%M:%S %f'):
+            if expires_in > now.strftime('%Y-%m-%d %H:%M:%S %f'):
                 access_token = b.access_token
+                expires_in = b.expires_in
 
-        return render(request, 'index.html', {"access_token":access_token})
+        return render(request, 'index.html', {"expires_in": expires_in, "access_token": access_token})
     else:
-        now = timezone.now()
-        b = Stoken.objects.all().order_by('-expires_in')[0]
-        if b is not None:
-            access_token = b.access_token
-        else:
-            expires_in = request.POST.get('expires_in')
-            access_token = request.POST.get('access_token')
-            #req = requests.post("https://api.parkline.cc/api/token", data={"apiid":apiid, "apikey":apikey}, headers={'user-agent': 'my-app/0.0.1'})
-            Stoken.objects.create(expires_in=expires_in, access_token=access_token)
+        ntype = request.POST.get('ntype')
+        expires_in = request.POST.get('expires_in')
+        access_token = request.POST.get('access_token')
+        if ntype == 'new':
+            Stoken.objects.filter(tid='99').update(expires_in=expires_in, access_token=access_token)
+        return JsonResponse({"access_token":access_token})
 
-        print(Stoken.objects.all().count())
 
-        return HttpResponse("OK!")
+
+

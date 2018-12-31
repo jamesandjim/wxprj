@@ -3,7 +3,8 @@ from django.db import models
 # Create your models here.
 
 class Stoken(models.Model):
-    expires_in = models.DateTimeField(auto_now_add=True)
+    tid = models.CharField(max_length=2)
+    expires_in = models.CharField(max_length=100)
     access_token = models.CharField(max_length=100)
 
     class Meta:
