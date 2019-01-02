@@ -21,7 +21,7 @@ $(document).ready(function () {
 
                         success: function (data1) {
 
-                            alert('new OK!');
+                            alert('生成了新的TOKEN！');
 
 
                         }
@@ -43,7 +43,7 @@ $(document).ready(function () {
 
                 success: function (data1) {
 
-                    alert('old OK!');
+                    alert('已获得旧的TOKEN！');
 
 
                 }

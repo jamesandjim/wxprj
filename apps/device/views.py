@@ -26,12 +26,14 @@ def gettoken(request):
 
         return render(request, 'index.html', {"expires_in": expires_in, "access_token": access_token})
     else:
+        status = 'old'
         ntype = request.POST.get('ntype')
         expires_in = request.POST.get('expires_in')
         access_token = request.POST.get('access_token')
         if ntype == 'new':
             Stoken.objects.filter(tid='99').update(expires_in=expires_in, access_token=access_token)
-        return JsonResponse({"access_token":access_token})
+            status = 'new'
+        return JsonResponse({"access_token":access_token, "status": status})
 
 
 
