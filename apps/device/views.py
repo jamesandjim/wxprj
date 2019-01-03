@@ -33,7 +33,7 @@ def gettoken(request):
         if ntype == 'new':
             Stoken.objects.filter(tid='99').update(expires_in=expires_in, access_token=access_token)
             status = 'new'
-        return JsonResponse({"access_token":access_token, "status": status})
+            return render(request, 'index.html', {"expires_in": expires_in, "access_token": access_token})
 
 
 

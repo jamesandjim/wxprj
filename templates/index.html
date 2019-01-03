@@ -7,12 +7,18 @@
     <script type="text/javascript" src ="/static/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src ="/static/gettoken.js"></script>
     <script type="text/javascript" src ="/static/opendoor.js"></script>
+    <script type="text/javascript" src ="/static/getstatus.js"></script>
 </head>
 <body>
     <label id="ac">{{ access_token }}</label>
     <label id="ex">{{ expires_in }}</label>
+    <label> {{ status }}</label>
+    <label> {{ doorstatus }}</label>
+    <label> {{ lockstatus }}</label>
+
     <input type="button" id="ok" value="取得Token">
     <input type="button" id="open" value="开门">
+    <input type="button" id="status" value="设备状态">
 
 
 </body>
