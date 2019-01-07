@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'reversion',
     'apps.sdti',
     'apps.device',
+    'apps.wxuser',
 ]
 
 MIDDLEWARE = [

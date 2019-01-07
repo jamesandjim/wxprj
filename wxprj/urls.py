@@ -23,7 +23,9 @@ from apps.device.views import gettoken
 
 
 urlpatterns = [
+
     path('xadmin/', xadmin.site.urls),
     url(r'^wx$', checkwx, name='wx'),
     url(r'^gettoken/', gettoken),
+
 ]
