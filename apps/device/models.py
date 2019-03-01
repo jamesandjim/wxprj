@@ -17,3 +17,7 @@ class Stoken(models.Model):
 
     def __str__(self):
         return self.device_name
+
+
+class Wxuser(models.Model):
+    username = models.CharField(max_length=50)
