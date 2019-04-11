@@ -25,7 +25,7 @@ sys.path.insert(0, os.path.join(BASE_DIR, 'extr_apps'))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '!3t7nn_68qca7ju%nsnu&q!i82e96o-pq%m3q+bejcc%@-r@sq'
 
-TOKEN = 'sdzhfssd88888'
+TOKEN = '111'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
